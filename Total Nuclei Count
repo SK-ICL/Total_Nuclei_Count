@@ -1,0 +1,7 @@
+setImageType('BRIGHTFIELD_H_E');
+setColorDeconvolutionStains('{"Name" : "H&E estimated", "Stain 1" : "Hematoxylin", "Values 1" : "0.5237 0.79993 0.29302", "Stain 2" : "Eosin", "Values 2" : "0.11171 0.94652 0.3027", "Background" : " 237 229 240"}');
+createAnnotationsFromPixelClassifier("Tissue Detection", 100000.0, 0.0, "SPLIT")
+selectAnnotations();
+runPlugin('qupath.lib.plugins.objects.SmoothFeaturesPlugin', '{"fwhmMicrons":25.0,"smoothWithinClasses":true}')
+runObjectClassifier("nucleiDetection");
+runPlugin('qupath.imagej.detect.cells.PositiveCellDetection', '{"detectionImageBrightfield":"Hematoxylin OD","requestedPixelSizeMicrons":1.5,"backgroundRadiusMicrons":8.0,"backgroundByReconstruction":true,"medianRadiusMicrons":0.0,"sigmaMicrons":1.5,"minAreaMicrons":10.0,"maxAreaMicrons":400.0,"threshold":0.1,"maxBackground":2.0,"watershedPostProcess":true,"cellExpansionMicrons":2.828054298642534,"includeNuclei":true,"smoothBoundaries":true,"makeMeasurements":true,"thresholdCompartment":"Nucleus: Eosin OD mean","thresholdPositive1":0.2,"thresholdPositive2":0.4,"thresholdPositive3":0.6000000000000001,"singleThreshold":false}')
